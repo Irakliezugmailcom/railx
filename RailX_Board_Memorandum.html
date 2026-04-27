@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RailX — Board Memorandum for approval">
+<meta name="robots" content="noindex, nofollow">
+<title>RailX — Board Memorandum · UMS</title>
+<style>
+ :root {
+ --navy: #1B3A6B;
+ --navy-dark: #122548;
+ --navy-light: #2E5A9B;
+ --orange: #E87722;
+ --orange-soft: #FDF4EC;
+ --paper: #FFFFFF;
+ --page: #F5F5F0;
+ --border: #E5E7EB;
+ --subtle: #F9FAFB;
+ --ink: #0F172A;
+ --ink-2: #475569;
+ --ink-3: #94A3B8;
+ --confidential: #991B1B;
+ --green: #047857;
+ --shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+ }
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+ body {
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+ font-size: 15px;
+ line-height: 1.65;
+ color: var(--ink);
+ background: var(--page);
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ }
+ /* Top language switcher */
+ .topbar {
+ position: sticky; top: 0; z-index: 100;
+ background: var(--navy);
+ color: white;
+ border-bottom: 3px solid var(--orange);
+ box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+ }
+ .topbar-inner {
+ max-width: 920px; margin: 0 auto;
+ padding: 14px 32px;
+ display: flex; align-items: center; justify-content: space-between;
+ gap: 24px; flex-wrap: wrap;
+ }
+ .brand { font-weight: 700; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase; }
+ .brand-sub { font-weight: 400; opacity: 0.7; font-size: 12px; margin-left: 8px; }
+ .lang-switch { display: flex; gap: 4px; background: rgba(255,255,255,0.08); padding: 3px; border-radius: 6px; }
+ .lang-btn {
+ background: transparent; color: white; border: none;
+ padding: 6px 14px; font-size: 13px; font-weight: 600;
+ letter-spacing: 0.5px; cursor: pointer; border-radius: 4px;
+ transition: all 0.15s; font-family: inherit;
+ }
+ .lang-btn:hover { background: rgba(255,255,255,0.12); }
+ .lang-btn.active { background: white; color: var(--navy); }
+
+ /* Main container */
+ .doc {
+ max-width: 800px; margin: 32px auto 80px;
+ background: var(--paper);
+ box-shadow: var(--shadow);
+ border-radius: 4px;
+ overflow: hidden;
+ }
+ .lang-section { display: none; }
+ .lang-section.active { display: block; }
+
+ /* Cover header */
+ .cover {
+ padding: 56px 64px 40px;
+ background: linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%);
+ border-bottom: 1px solid var(--border);
+ }
+ .conf-banner {
+ display: inline-block;
+ padding: 4px 12px;
+ background: #FEE2E2;
+ color: var(--confidential);
+ font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+ text-transform: uppercase;
+ border-radius: 3px;
+ margin-bottom: 24px;
+ }
+ .doc-title {
+ font-size: 11px; font-weight: 700; letter-spacing: 2px;
+ color: var(--ink-2); text-transform: uppercase;
+ margin-bottom: 8px;
+ }
+ .doc-h1 {
+ font-size: 32px; font-weight: 800; letter-spacing: -0.5px;
+ color: var(--navy); line-height: 1.15; margin-bottom: 28px;
+ }
+ .meta-table {
+ width: 100%; border-collapse: collapse; margin-top: 8px;
+ font-size: 14px;
+ }
+ .meta-table td {
+ padding: 8px 0; border-bottom: 1px solid var(--border);
+ vertical-align: top;
+ }
+ .meta-table td:first-child {
+ width: 180px; font-weight: 600; color: var(--ink-2);
+ font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase;
+ padding-right: 16px;
+ }
+
+ /* Content body */
+ .body { padding: 48px 64px 64px; }
+
+ /* Executive summary */
+ .exec-summary {
+ background: var(--orange-soft);
+ border-left: 4px solid var(--orange);
+ padding: 24px 28px;
+ border-radius: 0 6px 6px 0;
+ margin-bottom: 40px;
+ }
+ .exec-summary-label {
+ font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+ color: var(--orange); text-transform: uppercase;
+ margin-bottom: 8px;
+ }
+ .exec-summary p { font-size: 15.5px; line-height: 1.6; color: var(--ink); }
+
+ /* Sections */
+ .section { margin-top: 36px; }
+ .section h2 {
+ font-size: 19px; font-weight: 700; color: var(--navy);
+ margin-bottom: 14px; padding-bottom: 8px;
+ border-bottom: 2px solid var(--orange);
+ display: flex; align-items: baseline; gap: 12px;
+ }
+ .section h2 .sec-num {
+ font-size: 13px; font-weight: 700; color: var(--orange);
+ letter-spacing: 1px;
+ }
+ .section h3 {
+ font-size: 15px; font-weight: 600; color: var(--navy);
+ margin: 18px 0 8px;
+ }
+ .section p { margin-bottom: 12px; }
+ .section ul, .section ol { margin: 10px 0 12px 24px; }
+ .section li { margin-bottom: 4px; }
+
+ /* Tables */
+ .data-table {
+ width: 100%; border-collapse: collapse;
+ margin: 12px 0 16px; font-size: 14px;
+ border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+ }
+ .data-table th {
+ background: var(--navy); color: white;
+ padding: 10px 14px; text-align: left;
+ font-weight: 600; font-size: 13px;
+ letter-spacing: 0.3px;
+ }
+ .data-table td {
+ padding: 10px 14px; border-top: 1px solid var(--border);
+ vertical-align: top;
+ }
+ .data-table tr:nth-child(odd) td { background: var(--subtle); }
+ .data-table .num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+ .data-table .center { text-align: center; }
+ .data-table strong { color: var(--navy); }
+
+ /* Path A / Path B example boxes */
+ .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+ .path {
+ background: var(--subtle); border: 1px solid var(--border);
+ padding: 18px 20px; border-radius: 6px;
+ }
+ .path-label {
+ font-size: 11px; font-weight: 700; letter-spacing: 1px;
+ color: var(--orange); text-transform: uppercase;
+ margin-bottom: 6px;
+ }
+ .path h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+ .path .quote {
+ font-style: italic; color: var(--ink-2);
+ background: white; padding: 8px 12px;
+ border-left: 3px solid var(--orange);
+ margin: 8px 0; font-size: 13px;
+ border-radius: 0 3px 3px 0;
+ }
+ .converge {
+ background: var(--navy); color: white;
+ padding: 14px 20px; border-radius: 6px;
+ margin-top: 12px; font-size: 13.5px;
+ line-height: 1.55;
+ }
+ .converge strong { color: var(--orange); }
+
+ /* Resolution block */
+ .resolution {
+ background: var(--subtle);
+ border: 1px solid var(--border);
+ border-left: 4px solid var(--navy);
+ padding: 24px 28px;
+ margin: 16px 0;
+ border-radius: 0 6px 6px 0;
+ font-size: 14.5px;
+ }
+ .resolution p {
+ font-style: italic; color: var(--ink);
+ margin-bottom: 10px; padding-left: 32px; text-indent: -32px;
+ }
+ .resolution p:first-child { font-weight: 600; }
+ .resolution strong { font-style: normal; color: var(--navy); letter-spacing: 0.3px; }
+
+ /* Signature table */
+ .sig-table { margin-top: 16px; }
+ .sig-table th, .sig-table td { padding: 14px; height: 56px; }
+ .sig-table td.sig-name { width: 40%; font-weight: 600; }
+ .sig-table td.sig-blank { background: var(--subtle); }
+
+ /* Footer */
+ .footer {
+ padding: 28px 64px 36px;
+ background: var(--subtle);
+ border-top: 1px solid var(--border);
+ font-size: 12px; color: var(--ink-2);
+ line-height: 1.5;
+ }
+ .footer .footer-line { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+ .footer strong { color: var(--navy); }
+
+ /* Schedules */
+ .schedules { background: var(--subtle); padding: 16px 20px; border-radius: 6px; margin-top: 8px; }
+ .schedules ul { list-style: none; margin: 0; }
+ .schedules li {
+ padding: 6px 0; font-size: 13.5px;
+ display: flex; gap: 12px; align-items: baseline;
+ }
+ .schedules li::before {
+ content: "—"; color: var(--orange); font-weight: 700;
+ }
+
+ /* Inline code */
+ code {
+ font-family: ui-monospace, SF Mono, Menlo, Monaco, monospace;
+ font-size: 0.9em; background: var(--subtle);
+ padding: 1px 6px; border-radius: 3px;
+ color: var(--navy); font-weight: 500;
+ }
+ strong { color: var(--ink); font-weight: 700; }
+
+ /* Risk callout */
+ .risk-row td:first-child {
+ width: 30px; text-align: center; font-weight: 700;
+ color: var(--orange); background: var(--orange-soft);
+ }
+
+ /* Responsive */
+ @media (max-width: 720px) {
+ .topbar-inner { padding: 12px 20px; }
+ .doc { margin: 16px; }
+ .cover, .body, .footer { padding-left: 28px; padding-right: 28px; }
+ .doc-h1 { font-size: 24px; }
+ .meta-table td:first-child { width: 100px; font-size: 11px; }
+ .paths { grid-template-columns: 1fr; }
+ .data-table { font-size: 13px; }
+ .data-table th, .data-table td { padding: 8px 10px; }
+ }
+
+ /* Print styles */
+ @media print {
+ body { background: white; font-size: 11pt; }
+ .topbar { display: none; }
+ .doc { box-shadow: none; max-width: none; margin: 0; }
+ .lang-section { display: none !important; }
+ .lang-section.active { display: block !important; }
+ .cover { padding: 24pt 0; page-break-after: avoid; }
+ .body { padding: 0; }
+ .section { page-break-inside: avoid; margin-top: 18pt; }
+ .doc-h1 { font-size: 22pt; }
+ .section h2 { font-size: 13pt; }
+ .resolution { page-break-inside: avoid; }
+ a { color: var(--ink); text-decoration: none; }
+ .footer { padding: 12pt 0; }
+ }
+</style>
+</head>
+<body>
+
+<!-- Top language switcher -->
+<div class="topbar">
+ <div class="topbar-inner">
+ <div>
+ <span class="brand">RailX</span>
+ <span class="brand-sub">Board Memorandum · v1.0</span>
+ </div>
+ <div class="lang-switch" role="tablist">
+ <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+ <button class="lang-btn" data-lang="pl" onclick="switchLang('pl')">PL</button>
+ <button class="lang-btn" data-lang="ua" onclick="switchLang('ua')">UA</button>
+ </div>
+ </div>
+</div>
+
+<!-- ENGLISH -->
+<article class="doc lang-section active" id="lang-en">
+ <header class="cover">
+ <span class="conf-banner">Privileged &amp; Confidential</span>
+ <div class="doc-title">Memorandum</div>
+ <h1 class="doc-h1">RailX — Approval of Scope, Budget, and Procurement Plan</h1>
+ <table class="meta-table">
+ <tr><td>To</td><td>Board of Directors, United Multimodal Services LLC</td></tr>
+ <tr><td>From</td><td>Irakli Ezugbaia, Development Leader</td></tr>
+ <tr><td>Date</td><td>27 April 2026</td></tr>
+ <tr><td>Re</td><td>RailX MVP — six-month build, fixed-price €20,000 – €28,000</td></tr>
+ <tr><td>Decision Requested</td><td>Approve resolution at §11 by 30 April 2026</td></tr>
+ </table>
+ </header>
+
+ <div class="body">
+ <div class="exec-summary">
+ <div class="exec-summary-label">Executive Summary</div>
+ <p>We ask the Board to approve a six-month build of <strong>RailX</strong>, an AI-powered website that matches empty rail capacity to cargo on the Poland–Ukraine corridor, at a fixed price between <strong>€20,000 and €28,000</strong> (hard ceiling €35,000). Three vetted developers will submit Best &amp; Final Offers within five days of approval. Operating cost after launch is approximately <strong>€800/month</strong>, covered by two operator subscribers. Year 1 base revenue projection: <strong>€294,000</strong>.</p>
+ </div>
+
+ <section class="section">
+ <h2><span class="sec-num">§1</span> Purpose</h2>
+ <p>This memorandum requests Board approval of (a) the product scope, (b) the budget envelope, (c) the six-month timeline with four milestone payments, and (d) the procurement process at §10.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§2</span> Background</h2>
+ <p>Block train operators on the Poland–Ukraine corridor lose <strong>€8,000 to €20,000 per empty backhaul</strong> because they have no efficient way to find return cargo. Cargo owners overpay long-term contracts because no spot market exists. Today both sides find each other through phone calls and WhatsApp groups. RailX is first to market on this corridor.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§3</span> The product</h2>
+ <h3>3.1 What it is</h3>
+ <p>A website at <code>railx.eu</code>. Works on any browser, computer or phone. <strong>Not</strong> a mobile application. <strong>Not</strong> a chatbot. The AI assistant — called <strong>Rex</strong> — is the product.</p>
+
+ <h3>3.2 What users see</h3>
+ <table class="data-table">
+ <thead><tr><th style="width:30%">View</th><th>Function</th></tr></thead>
+ <tbody>
+ <tr><td><strong>Rex chat</strong></td><td>The main view. User types a request; Rex answers, asks follow-up questions, finds matches, prepares paperwork.</td></tr>
+ <tr><td><strong>Listings feed</strong></td><td>A scrollable, Facebook-style list of trains and cargo. Filter by route, date, wagon type. Click any post to message the poster.</td></tr>
+ <tr><td><strong>Messenger</strong></td><td>Private chat between the two parties; opens after the €150 commitment fee is paid.</td></tr>
+ </tbody>
+ </table>
+
+ <h3>3.3 How users interact — two paths</h3>
+ <div class="paths">
+ <div class="path">
+ <div class="path-label">Path A · Ask Rex</div>
+ <h4>Cargo owner types in Ukrainian:</h4>
+ <div class="quote">"I need 20 tonnes of grain from Lviv to Hamburg next Tuesday. Standard gauge wagons."</div>
+ <p>Rex answers in Ukrainian. Asks two clarifying questions. Shows three matching trains with prices.</p>
+ </div>
+ <div class="path">
+ <div class="path-label">Path B · Browse the feed</div>
+ <h4>Same user scrolls the listings feed:</h4>
+ <div class="quote">Filters: Lviv → Hamburg / Tuesday / standard gauge → 3 matching posts</div>
+ <p>User clicks one. Rex drafts a polite opening message in Ukrainian.</p>
+ </div>
+ </div>
+ <div class="converge">
+ <strong>Both paths converge:</strong> pay €150 → carrier's contact appears → private messenger opens → 48-hour response guarantee runs. If the carrier is silent for 48 hours, the €150 is refunded.
+ </div>
+
+ <h3>3.4 Languages</h3>
+ <p>Rex auto-detects and converses in <strong>English, Polish, and Ukrainian</strong>.</p>
+
+ <h3>3.5 Rex performs six jobs</h3>
+ <table class="data-table">
+ <thead><tr><th style="width:8%">#</th><th style="width:25%">Job</th><th>What it does</th></tr></thead>
+ <tbody>
+ <tr><td class="center"><strong>1</strong></td><td><strong>Listings</strong></td><td>Carriers create capacity posts via conversation.</td></tr>
+ <tr><td class="center"><strong>2</strong></td><td><strong>Discovery</strong></td><td>Cargo owners receive ranked matches with rationale.</td></tr>
+ <tr><td class="center"><strong>3</strong></td><td><strong>Commitment</strong></td><td>Handles €150 payment, 48-hour guarantee, contact disclosure.</td></tr>
+ <tr><td class="center"><strong>4</strong></td><td><strong>Messenger</strong></td><td>Drafts notes, summarises threads, escalates to WhatsApp.</td></tr>
+ <tr><td class="center"><strong>5</strong></td><td><strong>Verification</strong></td><td>Checks Polish UTK and Ukrainian rail authority licenses.</td></tr>
+ <tr><td class="center"><strong>6</strong></td><td><strong>Intelligence</strong></td><td>Post-launch · market trends · €2,500/month subscription.</td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§4</span> Revenue model</h2>
+ <table class="data-table">
+ <thead><tr><th>Source</th><th>Price</th><th>Payer</th></tr></thead>
+ <tbody>
+ <tr><td>Commitment fee</td><td><strong>€150</strong> per match (rises to €450 in month 12)</td><td>Cargo owner</td></tr>
+ <tr><td>Verification subscription</td><td><strong>€750 / month</strong></td><td>Verified operators</td></tr>
+ <tr><td>Verification subscription</td><td><strong>€399 / month</strong></td><td>Verified cargo owners</td></tr>
+ <tr><td>Featured Placement</td><td>€500 / week</td><td>Operators</td></tr>
+ </tbody>
+ </table>
+ <p>Break-even: <strong>2 paying operator subscriptions</strong>. Year 1 base revenue projection: <strong>€294,000</strong>.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§5</span> Budget</h2>
+ <table class="data-table">
+ <thead><tr><th>Tier</th><th class="num">Amount</th></tr></thead>
+ <tbody>
+ <tr><td>Floor (lowest fixed-price bid we will accept)</td><td class="num"><strong>€20,000</strong></td></tr>
+ <tr><td>Target range</td><td class="num"><strong>€20,000 – €28,000</strong></td></tr>
+ <tr><td>Ceiling (Board approval required above)</td><td class="num"><strong>€35,000</strong></td></tr>
+ <tr><td>Above ceiling</td><td class="num">Not approved · scope reduction required</td></tr>
+ </tbody>
+ </table>
+ <p>Operating cost after launch: approximately <strong>€800/month</strong> (Anthropic Claude API €150 + hosting €50 + project manager €600). Covered by two operator subscribers at €750 each.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§6</span> Timeline and milestone payments</h2>
+ <table class="data-table">
+ <thead><tr><th class="center" style="width:8%">M</th><th>Deliverable</th><th class="center" style="width:18%">Payment</th></tr></thead>
+ <tbody>
+ <tr><td class="center"><strong>1</strong></td><td>Foundations, schema, Rex skeleton; <strong>Stripe-Ukraine bank verification in week one</strong></td><td class="center"><strong>25%</strong> on signing</td></tr>
+ <tr><td class="center"><strong>2</strong></td><td>Sign-up flows, listings posting, basic Rex search</td><td class="center">—</td></tr>
+ <tr><td class="center"><strong>3</strong></td><td>Stripe live, €150 commitment flow end-to-end, 48-hour guarantee</td><td class="center"><strong>25%</strong></td></tr>
+ <tr><td class="center"><strong>4</strong></td><td>Document checks, ratings, on-platform messenger, WhatsApp escalation</td><td class="center">—</td></tr>
+ <tr><td class="center"><strong>5</strong></td><td>All six Rex jobs operational; tested in EN/PL/UA against 30 corridor scenarios</td><td class="center"><strong>25%</strong></td></tr>
+ <tr><td class="center"><strong>6</strong></td><td>Public launch at <code>railx.eu</code>; first live transaction recorded</td><td class="center"><strong>25%</strong></td></tr>
+ </tbody>
+ </table>
+ <p>No milestone payment is released without a working demonstration accepted by the Development Leader. No exceptions.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§7</span> Key risks and mitigation</h2>
+ <table class="data-table">
+ <thead><tr><th class="center" style="width:8%">#</th><th style="width:35%">Risk</th><th>Mitigation</th></tr></thead>
+ <tbody>
+ <tr class="risk-row"><td>1</td><td><strong>Stripe support for Ukrainian banks is limited.</strong></td><td>Verify in week one. If Stripe fails for UA carriers: route payouts through UMS Sp. z o.o. (Polish entity, Szczecin) or switch to Mangopay.</td></tr>
+ <tr class="risk-row"><td>2</td><td><strong>Customs and dangerous-goods rules change frequently.</strong></td><td>Rex prepares draft documents only. Sani Ezugbaia approves before issuance. Full automation deferred.</td></tr>
+ <tr class="risk-row"><td>3</td><td><strong>No live data feed from PKP Cargo or Ukrzaliznytsia at launch.</strong></td><td>Launch with manual updates. Add automated tracking after launch.</td></tr>
+ <tr class="risk-row"><td>4</td><td><strong>Developer over-promises and under-delivers.</strong></td><td>Best &amp; Final Offer process; named team members required; client reference required; 25/25/25/25 milestone payments tied to working demos.</td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§8</span> Scope exclusions</h2>
+ <p>The following are explicitly <strong>out of MVP</strong>:</p>
+ <ul>
+ <li>Native mobile applications</li>
+ <li>Other rail corridors beyond PL ↔ UA</li>
+ <li>Carrier TMS integrations</li>
+ <li>Real-time GPS tracking</li>
+ <li>AI-driven dispute resolution</li>
+ <li>Customs-ready original SMGS waybills (drafts only in MVP)</li>
+ </ul>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§9</span> Intellectual property</h2>
+ <p>All code, AI prompts, data structures, agent configurations, and documentation become the <strong>sole property of United Multimodal Services LLC</strong> upon final milestone payment. Developer must execute a written IP assignment as a condition of final payment.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§10</span> Procurement process</h2>
+ <p>Three developers have been vetted across 166 applicants from Upwork and Djinni:</p>
+ <table class="data-table">
+ <thead><tr><th class="center" style="width:6%">#</th><th style="width:30%">Developer</th><th style="width:24%">Location</th><th class="center" style="width:12%">Score</th><th>Status</th></tr></thead>
+ <tbody>
+ <tr><td class="center"><strong>1</strong></td><td><strong>Aalishan Jami</strong></td><td>Pakistan (Lahore)</td><td class="center"><strong>83/100</strong></td><td>Architecture leader</td></tr>
+ <tr><td class="center"><strong>2</strong></td><td><strong>Artem D. (UppLabs)</strong></td><td>Ukraine (Kyiv) + Poland</td><td class="center"><strong>82/100</strong></td><td>Full proposal received</td></tr>
+ <tr><td class="center"><strong>3</strong></td><td><strong>Andrii Berezovskyi (Pecode)</strong></td><td>Ukraine (Lviv)</td><td class="center"><strong>59/100</strong></td><td>Pre-bid · awaiting BAFO</td></tr>
+ </tbody>
+ </table>
+ <p>All three receive identical Best &amp; Final Offer requests within 24 hours of Board approval. Deadline: <strong>5 business days</strong> for final commercial, timeline, team, and delivery commitments. Technical interviews on <strong>days 7–9</strong>. Contract signed on <strong>day 10</strong>.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§11</span> Resolution requested</h2>
+ <p>The Board is requested to <strong>resolve as follows</strong>:</p>
+ <div class="resolution">
+ <p><strong>RESOLVED</strong>, that the Board of Directors of United Multimodal Services LLC hereby:</p>
+ <p>(a) <strong>APPROVES</strong> the development of RailX as described in this memorandum and the attached Scope of Works v2 (Schedule A);</p>
+ <p>(b) <strong>APPROVES</strong> the budget envelope of €20,000 – €28,000 fixed-price, with a hard ceiling of €35,000;</p>
+ <p>(c) <strong>APPROVES</strong> the six-month timeline and 25/25/25/25 milestone payment structure;</p>
+ <p>(d) <strong>APPROVES</strong> the procurement process described in §10, including the issuance of Best &amp; Final Offer requests to the three pre-vetted developers; and</p>
+ <p>(e) <strong>AUTHORISES</strong> the Development Leader, Irakli Ezugbaia, to negotiate and execute the development agreement with the selected developer on terms consistent with this memorandum.</p>
+ </div>
+
+ <h3 style="margin-top: 28px;">Board approval</h3>
+ <table class="data-table sig-table">
+ <thead><tr><th style="width:40%">Member</th><th class="center" style="width:20%">Vote</th><th class="center" style="width:25%">Signature</th><th class="center" style="width:15%">Date</th></tr></thead>
+ <tbody>
+ <tr><td class="sig-name">Irakli Ezugbaia · Development Leader</td><td class="sig-blank"></td><td class="sig-blank"></td><td class="sig-blank"></td></tr>
+ <tr><td class="sig-name">[Board Member 2]</td><td class="sig-blank"></td><td class="sig-blank"></td><td class="sig-blank"></td></tr>
+ <tr><td class="sig-name">[Board Member 3]</td><td class="sig-blank"></td><td class="sig-blank"></td><td class="sig-blank"></td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§12</span> Schedules</h2>
+ <div class="schedules">
+ <ul>
+ <li><strong>Schedule A</strong> — RailX Scope of Works v2 (English / Українська / Polski)</li>
+ <li><strong>Schedule B</strong> — Candidate evaluation summary, 166 applicants reviewed</li>
+ <li><strong>Schedule C</strong> — Best &amp; Final Offer request template <em>(circulated upon approval)</em></li>
+ </ul>
+ </div>
+ </section>
+ </div>
+
+ <footer class="footer">
+ <div class="footer-line">
+ <div><strong>UMS · United Multimodal Services LLC</strong> · Energetyków 4/425, 70-656 Szczecin, Poland</div>
+ <div>v1.0 · 27 April 2026</div>
+ </div>
+ <div style="margin-top: 8px;">Privileged &amp; Confidential · Distribution: UMS Board only · Do not circulate</div>
+ </footer>
+</article>
+
+<!-- POLISH -->
+<article class="doc lang-section" id="lang-pl">
+ <header class="cover">
+ <span class="conf-banner">Poufne · Z zastrzeżeniem poufności</span>
+ <div class="doc-title">Memorandum</div>
+ <h1 class="doc-h1">RailX — Zatwierdzenie zakresu, budżetu i procesu wyboru wykonawcy</h1>
+ <table class="meta-table">
+ <tr><td>Do</td><td>Zarządu, United Multimodal Services LLC</td></tr>
+ <tr><td>Od</td><td>Irakli Ezugbaia, Lider Rozwoju</td></tr>
+ <tr><td>Data</td><td>27 kwietnia 2026</td></tr>
+ <tr><td>Dotyczy</td><td>RailX MVP — budowa 6-miesięczna, stała cena €20 000 – €28 000</td></tr>
+ <tr><td>Wnioskowana decyzja</td><td>Zatwierdzenie uchwały §11 do 30 kwietnia 2026</td></tr>
+ </table>
+ </header>
+
+ <div class="body">
+ <div class="exec-summary">
+ <div class="exec-summary-label">Podsumowanie wykonawcze</div>
+ <p>Prosimy Zarząd o zatwierdzenie 6-miesięcznej budowy <strong>RailX</strong> — strony internetowej z AI, która łączy puste pojemności pociągów z ładunkami na korytarzu Polska–Ukraina, w cenie stałej między <strong>€20 000 a €28 000</strong> (twardy sufit €35 000). Trzech zweryfikowanych deweloperów złoży oferty Best &amp; Final w ciągu 5 dni od zatwierdzenia. Koszt operacyjny po starcie: około <strong>€800/msc</strong>, pokryty przez dwóch płacących operatorów. Prognoza przychodu rok 1: <strong>€294 000</strong>.</p>
+ </div>
+
+ <section class="section">
+ <h2><span class="sec-num">§1</span> Cel</h2>
+ <p>Memorandum wnioskuje o zatwierdzenie przez Zarząd: (a) zakresu produktu, (b) ramy budżetowej, (c) 6-miesięcznego harmonogramu z czterema płatnościami milestone, oraz (d) procesu wyboru wykonawcy w §10.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§2</span> Tło</h2>
+ <p>Operatorzy pociągów blokowych na korytarzu Polska–Ukraina tracą <strong>€8 000 do €20 000 na każdym pustym powrocie</strong>, ponieważ nie mają jak znaleźć ładunku powrotnego. Właściciele ładunków przepłacają umowy długoterminowe, bo nie istnieje rynek spot. Dziś obie strony szukają się przez telefon i grupy na WhatsAppie. RailX wchodzi pierwszy na ten korytarz.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§3</span> Produkt</h2>
+ <h3>3.1 Co to jest</h3>
+ <p>Strona internetowa pod adresem <code>railx.eu</code>. Działa w każdej przeglądarce, na komputerze i telefonie. <strong>Nie</strong> aplikacja mobilna. <strong>Nie</strong> chatbot. Asystent AI — <strong>Rex</strong> — JEST produktem.</p>
+
+ <h3>3.2 Co widzą użytkownicy</h3>
+ <table class="data-table">
+ <thead><tr><th style="width:30%">Widok</th><th>Funkcja</th></tr></thead>
+ <tbody>
+ <tr><td><strong>Czat z Rexem</strong></td><td>Główny widok. Użytkownik pisze prośbę; Rex odpowiada, dopytuje, znajduje oferty, przygotowuje dokumenty.</td></tr>
+ <tr><td><strong>Tablica ogłoszeń</strong></td><td>Przewijana lista pociągów i ładunków w stylu Facebooka. Filtry: trasa, data, typ wagonu. Kliknij post, by napisać do autora.</td></tr>
+ <tr><td><strong>Messenger</strong></td><td>Prywatny czat między dwiema stronami; otwiera się po opłaceniu €150 commitment.</td></tr>
+ </tbody>
+ </table>
+
+ <h3>3.3 Jak użytkownicy wchodzą w interakcję — dwie ścieżki</h3>
+ <div class="paths">
+ <div class="path">
+ <div class="path-label">Ścieżka A · Zapytaj Rexa</div>
+ <h4>Właściciel ładunku pisze po ukraińsku:</h4>
+ <div class="quote">„Muszę wysłać 20 ton zboża ze Lwowa do Hamburga w następny wtorek. Tor normalny."</div>
+ <p>Rex odpowiada po ukraińsku. Zadaje dwa pytania doprecyzowujące. Pokazuje trzy pasujące pociągi z cenami.</p>
+ </div>
+ <div class="path">
+ <div class="path-label">Ścieżka B · Przejrzyj tablicę</div>
+ <h4>Ten sam użytkownik przewija tablicę:</h4>
+ <div class="quote">Filtry: Lwów → Hamburg / wtorek / tor normalny → 3 pasujące posty</div>
+ <p>Klika jeden. Rex pisze grzeczną wiadomość wstępną po ukraińsku.</p>
+ </div>
+ </div>
+ <div class="converge">
+ <strong>Obie ścieżki łączą się:</strong> opłata €150 → pojawia się kontakt przewoźnika → otwiera się prywatny messenger → biegnie 48-godzinna gwarancja. Jeśli przewoźnik milczy 48 h — €150 wraca.
+ </div>
+
+ <h3>3.4 Języki</h3>
+ <p>Rex auto-wykrywa i rozmawia w <strong>angielskim, polskim i ukraińskim</strong>.</p>
+
+ <h3>3.5 Rex wykonuje sześć zadań</h3>
+ <table class="data-table">
+ <thead><tr><th style="width:8%">#</th><th style="width:25%">Zadanie</th><th>Co robi</th></tr></thead>
+ <tbody>
+ <tr><td class="center"><strong>1</strong></td><td><strong>Ogłoszenia</strong></td><td>Przewoźnicy tworzą oferty pojemności przez rozmowę.</td></tr>
+ <tr><td class="center"><strong>2</strong></td><td><strong>Wyszukiwanie</strong></td><td>Właściciele ładunków otrzymują uszeregowane dopasowania z uzasadnieniem.</td></tr>
+ <tr><td class="center"><strong>3</strong></td><td><strong>Commitment</strong></td><td>Obsługuje płatność €150, gwarancję 48 h, ujawnienie kontaktów.</td></tr>
+ <tr><td class="center"><strong>4</strong></td><td><strong>Messenger</strong></td><td>Pisze wiadomości, podsumowuje wątki, eskaluje na WhatsAppa.</td></tr>
+ <tr><td class="center"><strong>5</strong></td><td><strong>Weryfikacja</strong></td><td>Sprawdza polskie licencje UTK i ukraińskie kolejowe.</td></tr>
+ <tr><td class="center"><strong>6</strong></td><td><strong>Inteligencja</strong></td><td>Po starcie · trendy rynkowe · subskrypcja €2 500/msc.</td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§4</span> Model przychodowy</h2>
+ <table class="data-table">
+ <thead><tr><th>Źródło</th><th>Cena</th><th>Kto płaci</th></tr></thead>
+ <tbody>
+ <tr><td>Opłata commitment</td><td><strong>€150</strong> za dopasowanie (rośnie do €450 w msc 12)</td><td>Właściciel ładunku</td></tr>
+ <tr><td>Subskrypcja weryfikacji</td><td><strong>€750 / msc</strong></td><td>Zweryfikowani przewoźnicy</td></tr>
+ <tr><td>Subskrypcja weryfikacji</td><td><strong>€399 / msc</strong></td><td>Zweryfikowani właściciele ładunku</td></tr>
+ <tr><td>Wyróżnione ogłoszenia</td><td>€500 / tydzień</td><td>Przewoźnicy</td></tr>
+ </tbody>
+ </table>
+ <p>Próg rentowności: <strong>2 płacących przewoźników</strong>. Prognoza przychodu rok 1: <strong>€294 000</strong>.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§5</span> Budżet</h2>
+ <table class="data-table">
+ <thead><tr><th>Poziom</th><th class="num">Kwota</th></tr></thead>
+ <tbody>
+ <tr><td>Minimum (najniższa stała cena, którą przyjmiemy)</td><td class="num"><strong>€20 000</strong></td></tr>
+ <tr><td>Zakres docelowy</td><td class="num"><strong>€20 000 – €28 000</strong></td></tr>
+ <tr><td>Sufit (powyżej wymaga zatwierdzenia Zarządu)</td><td class="num"><strong>€35 000</strong></td></tr>
+ <tr><td>Powyżej sufitu</td><td class="num">Niezatwierdzone · konieczne cięcie zakresu</td></tr>
+ </tbody>
+ </table>
+ <p>Koszt operacyjny po starcie: około <strong>€800/msc</strong> (Anthropic Claude API €150 + hosting €50 + project manager €600). Pokryte przez dwóch przewoźników po €750.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§6</span> Harmonogram i płatności milestone</h2>
+ <table class="data-table">
+ <thead><tr><th class="center" style="width:8%">M</th><th>Rezultat</th><th class="center" style="width:18%">Płatność</th></tr></thead>
+ <tbody>
+ <tr><td class="center"><strong>1</strong></td><td>Fundamenty, schemat, szkielet Rexa; <strong>weryfikacja Stripe-Ukraina w tygodniu 1</strong></td><td class="center"><strong>25%</strong> przy podpisaniu</td></tr>
+ <tr><td class="center"><strong>2</strong></td><td>Rejestracja, wystawianie ogłoszeń, podstawowe wyszukiwanie Rex</td><td class="center">—</td></tr>
+ <tr><td class="center"><strong>3</strong></td><td>Stripe żywy, przepływ commitment €150 od początku do końca, gwarancja 48 h</td><td class="center"><strong>25%</strong></td></tr>
+ <tr><td class="center"><strong>4</strong></td><td>Sprawdzanie dokumentów, oceny, messenger, eskalacja WhatsApp</td><td class="center">—</td></tr>
+ <tr><td class="center"><strong>5</strong></td><td>Wszystkie sześć zadań Rexa działa; przetestowane EN/PL/UA na 30 scenariuszach</td><td class="center"><strong>25%</strong></td></tr>
+ <tr><td class="center"><strong>6</strong></td><td>Publiczny start na <code>railx.eu</code>; pierwsza realna transakcja</td><td class="center"><strong>25%</strong></td></tr>
+ </tbody>
+ </table>
+ <p>Żadna płatność milestone nie jest zwalniana bez działającej demonstracji zaakceptowanej przez Lidera Rozwoju. Bez wyjątków.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§7</span> Kluczowe ryzyka i mitygacje</h2>
+ <table class="data-table">
+ <thead><tr><th class="center" style="width:8%">#</th><th style="width:35%">Ryzyko</th><th>Mitygacja</th></tr></thead>
+ <tbody>
+ <tr class="risk-row"><td>1</td><td><strong>Stripe słabo wspiera ukraińskie banki.</strong></td><td>Weryfikacja w tygodniu 1. Jeśli zawiedzie: kierujemy wypłaty Ukraińcom przez UMS Sp. z o.o. (Szczecin) lub przechodzimy na Mangopay.</td></tr>
+ <tr class="risk-row"><td>2</td><td><strong>Przepisy celne i niebezpiecznych ładunków zmieniają się często.</strong></td><td>Rex robi tylko szkice dokumentów. Sani Ezugbaia akceptuje przed wydaniem. Pełna automatyzacja odłożona.</td></tr>
+ <tr class="risk-row"><td>3</td><td><strong>Brak feedu danych z PKP Cargo / Ukrzaliznytsia na starcie.</strong></td><td>Start z ręcznym aktualizowaniem. Automatyczny tracking po starcie.</td></tr>
+ <tr class="risk-row"><td>4</td><td><strong>Deweloper obiecuje za dużo, dostarcza za mało.</strong></td><td>Proces Best &amp; Final Offer; wymagani imienni członkowie zespołu; referencja klienta; milestone 25/25/25/25 powiązane z demo.</td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§8</span> Wyłączenia z zakresu</h2>
+ <p>Następujące pozycje są wyraźnie <strong>poza MVP</strong>:</p>
+ <ul>
+ <li>Aplikacje mobilne natywne</li>
+ <li>Inne korytarze kolejowe poza PL ↔ UA</li>
+ <li>Integracje TMS przewoźników</li>
+ <li>Tracking GPS w czasie rzeczywistym</li>
+ <li>Rozstrzyganie sporów przez AI</li>
+ <li>Oryginały SMGS gotowe do odprawy (w MVP tylko szkice)</li>
+ </ul>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§9</span> Własność intelektualna</h2>
+ <p>Cały kod, prompty AI, struktury danych, konfiguracje agentów i dokumentacja stają się <strong>wyłączną własnością United Multimodal Services LLC</strong> po końcowej płatności milestone. Deweloper musi podpisać pisemne przeniesienie praw IP jako warunek końcowej płatności.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§10</span> Proces wyboru wykonawcy</h2>
+ <p>Trzech deweloperów zostało zweryfikowanych spośród 166 kandydatów z Upwork i Djinni:</p>
+ <table class="data-table">
+ <thead><tr><th class="center" style="width:6%">#</th><th style="width:30%">Deweloper</th><th style="width:24%">Lokalizacja</th><th class="center" style="width:12%">Wynik</th><th>Status</th></tr></thead>
+ <tbody>
+ <tr><td class="center"><strong>1</strong></td><td><strong>Aalishan Jami</strong></td><td>Pakistan (Lahore)</td><td class="center"><strong>83/100</strong></td><td>Lider architektury</td></tr>
+ <tr><td class="center"><strong>2</strong></td><td><strong>Artem D. (UppLabs)</strong></td><td>Ukraina (Kijów) + Polska</td><td class="center"><strong>82/100</strong></td><td>Pełna oferta otrzymana</td></tr>
+ <tr><td class="center"><strong>3</strong></td><td><strong>Andrii Berezovskyi (Pecode)</strong></td><td>Ukraina (Lwów)</td><td class="center"><strong>59/100</strong></td><td>Przed-oferta · oczekiwane BAFO</td></tr>
+ </tbody>
+ </table>
+ <p>Wszyscy trzej otrzymują identyczne zapytania Best &amp; Final Offer w 24 h od zatwierdzenia. Termin: <strong>5 dni roboczych</strong> na finalne zobowiązania komercyjne, harmonogram, zespół, dostawę. Wywiady techniczne w <strong>dniach 7–9</strong>. Umowa podpisana w <strong>dniu 10</strong>.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§11</span> Wnioskowana uchwała</h2>
+ <p>Wnioskuje się, by Zarząd <strong>uchwalił, co następuje</strong>:</p>
+ <div class="resolution">
+ <p><strong>POSTANAWIA SIĘ</strong>, że Zarząd United Multimodal Services LLC niniejszym:</p>
+ <p>(a) <strong>ZATWIERDZA</strong> rozwój RailX zgodnie z opisem w niniejszym memorandum i załączonym Zakresie Prac v2 (Załącznik A);</p>
+ <p>(b) <strong>ZATWIERDZA</strong> ramę budżetową €20 000 – €28 000 stałej ceny, z twardym sufitem €35 000;</p>
+ <p>(c) <strong>ZATWIERDZA</strong> 6-miesięczny harmonogram i strukturę płatności milestone 25/25/25/25;</p>
+ <p>(d) <strong>ZATWIERDZA</strong> proces wyboru wykonawcy opisany w §10, w tym wystawienie zapytań Best &amp; Final Offer trzem zweryfikowanym deweloperom; oraz</p>
+ <p>(e) <strong>UPOWAŻNIA</strong> Lidera Rozwoju, Iraklego Ezugbaia, do negocjowania i podpisania umowy o rozwój z wybranym deweloperem na warunkach zgodnych z niniejszym memorandum.</p>
+ </div>
+
+ <h3 style="margin-top: 28px;">Zatwierdzenie Zarządu</h3>
+ <table class="data-table sig-table">
+ <thead><tr><th style="width:40%">Członek</th><th class="center" style="width:20%">Głos</th><th class="center" style="width:25%">Podpis</th><th class="center" style="width:15%">Data</th></tr></thead>
+ <tbody>
+ <tr><td class="sig-name">Irakli Ezugbaia · Lider Rozwoju</td><td class="sig-blank"></td><td class="sig-blank"></td><td class="sig-blank"></td></tr>
+ <tr><td class="sig-name">[Członek Zarządu 2]</td><td class="sig-blank"></td><td class="sig-blank"></td><td class="sig-blank"></td></tr>
+ <tr><td class="sig-name">[Członek Zarządu 3]</td><td class="sig-blank"></td><td class="sig-blank"></td><td class="sig-blank"></td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§12</span> Załączniki</h2>
+ <div class="schedules">
+ <ul>
+ <li><strong>Załącznik A</strong> — RailX Zakres Prac v2 (English / Українська / Polski)</li>
+ <li><strong>Załącznik B</strong> — Podsumowanie ewaluacji kandydatów, 166 aplikacji</li>
+ <li><strong>Załącznik C</strong> — Szablon zapytania Best &amp; Final Offer <em>(rozsyłany po zatwierdzeniu)</em></li>
+ </ul>
+ </div>
+ </section>
+ </div>
+
+ <footer class="footer">
+ <div class="footer-line">
+ <div><strong>UMS · United Multimodal Services LLC</strong> · Energetyków 4/425, 70-656 Szczecin, Polska</div>
+ <div>v1.0 · 27 kwietnia 2026</div>
+ </div>
+ <div style="margin-top: 8px;">Poufne · Dystrybucja: tylko Zarząd UMS · Nie rozpowszechniać</div>
+ </footer>
+</article>
+
+<!-- UKRAINIAN -->
+<article class="doc lang-section" id="lang-ua">
+ <header class="cover">
+ <span class="conf-banner">Конфіденційно · Для внутрішнього використання</span>
+ <div class="doc-title">Меморандум</div>
+ <h1 class="doc-h1">RailX — Затвердження обсягу, бюджету та процесу відбору</h1>
+ <table class="meta-table">
+ <tr><td>Кому</td><td>Раді директорів, United Multimodal Services LLC</td></tr>
+ <tr><td>Від</td><td>Іраклій Езугбая, Керівник розробки</td></tr>
+ <tr><td>Дата</td><td>27 квітня 2026</td></tr>
+ <tr><td>Тема</td><td>RailX MVP — 6-місячна розробка, фіксована ціна €20 000 – €28 000</td></tr>
+ <tr><td>Запит на рішення</td><td>Затвердити постанову §11 до 30 квітня 2026</td></tr>
+ </table>
+ </header>
+
+ <div class="body">
+ <div class="exec-summary">
+ <div class="exec-summary-label">Стисле резюме</div>
+ <p>Ми просимо Раду затвердити 6-місячну розробку <strong>RailX</strong> — сайту з ШІ, що зводить порожні вагони з вантажем на коридорі Польща–Україна, за фіксованою ціною від <strong>€20 000 до €28 000</strong> (жорстка стеля €35 000). Троє перевірених розробників подадуть Best &amp; Final Offer протягом 5 днів після затвердження. Операційні витрати після запуску: близько <strong>€800/міс</strong>, покриваються двома платними операторами. Прогноз доходу за 1-й рік: <strong>€294 000</strong>.</p>
+ </div>
+
+ <section class="section">
+ <h2><span class="sec-num">§1</span> Мета</h2>
+ <p>Меморандум запитує затвердження Радою: (а) обсягу продукту, (б) бюджетної рамки, (в) 6-місячного графіка з чотирма виплатами за етапами, (г) процесу відбору в §10.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§2</span> Передумови</h2>
+ <p>Оператори блок-поїздів на коридорі Польща–Україна втрачають <strong>€8 000 – €20 000 на кожному порожньому зворотному рейсі</strong>, бо немає ефективного способу знайти вантаж назад. Власники вантажу переплачують довгострокові контракти, бо немає спот-ринку. Сьогодні обидві сторони шукають одна одну через телефонні дзвінки і чати WhatsApp. RailX заходить на цей коридор першим.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§3</span> Продукт</h2>
+ <h3>3.1 Що це</h3>
+ <p>Сайт за адресою <code>railx.eu</code>. Працює в будь-якому браузері, на комп'ютері й телефоні. <strong>Не</strong> мобільний застосунок. <strong>Не</strong> чат-бот. ШІ-асистент на ім'я <strong>Rex</strong> — це і є продукт.</p>
+
+ <h3>3.2 Що бачать користувачі</h3>
+ <table class="data-table">
+ <thead><tr><th style="width:30%">Вид</th><th>Функція</th></tr></thead>
+ <tbody>
+ <tr><td><strong>Чат з Rex</strong></td><td>Головний вид. Користувач пише запит; Rex відповідає, ставить уточнюючі запитання, знаходить варіанти, готує документи.</td></tr>
+ <tr><td><strong>Стрічка лістингів</strong></td><td>Прокручуваний список поїздів і вантажів у стилі Facebook. Фільтри: маршрут, дата, тип вагона. Натискаєте пост — пишете автору.</td></tr>
+ <tr><td><strong>Месенджер</strong></td><td>Приватний чат між сторонами; відкривається після оплати застави €150.</td></tr>
+ </tbody>
+ </table>
+
+ <h3>3.3 Як користувачі взаємодіють — два шляхи</h3>
+ <div class="paths">
+ <div class="path">
+ <div class="path-label">Шлях А · Запитати Rex</div>
+ <h4>Власник вантажу пише українською:</h4>
+ <div class="quote">«Мені треба перевезти 20 тонн зерна зі Львова до Гамбурга наступного вівторка. Стандартна колія.»</div>
+ <p>Rex відповідає українською. Ставить два уточнюючі запитання. Показує три поїзди з цінами.</p>
+ </div>
+ <div class="path">
+ <div class="path-label">Шлях Б · Переглянути стрічку</div>
+ <h4>Той самий користувач прокручує стрічку:</h4>
+ <div class="quote">Фільтри: Львів → Гамбург / вівторок / стандартна колія → 3 пости</div>
+ <p>Клікає один. Rex пише ввічливе вступне повідомлення українською.</p>
+ </div>
+ </div>
+ <div class="converge">
+ <strong>Обидва шляхи сходяться:</strong> оплата €150 → з'являється контакт перевізника → відкривається приватний месенджер → пішов відлік 48-годинної гарантії. Якщо перевізник мовчить — €150 повертаються.
+ </div>
+
+ <h3>3.4 Мови</h3>
+ <p>Rex автоматично визначає та спілкується <strong>англійською, польською та українською</strong>.</p>
+
+ <h3>3.5 Rex виконує шість завдань</h3>
+ <table class="data-table">
+ <thead><tr><th style="width:8%">№</th><th style="width:25%">Завдання</th><th>Що робить</th></tr></thead>
+ <tbody>
+ <tr><td class="center"><strong>1</strong></td><td><strong>Лістинг</strong></td><td>Перевізники створюють пости місткості через розмову.</td></tr>
+ <tr><td class="center"><strong>2</strong></td><td><strong>Пошук</strong></td><td>Власники вантажу отримують ранжовані варіанти з обґрунтуванням.</td></tr>
+ <tr><td class="center"><strong>3</strong></td><td><strong>Комітмент</strong></td><td>Веде платіж €150, гарантію 48 годин, розкриття контактів.</td></tr>
+ <tr><td class="center"><strong>4</strong></td><td><strong>Месенджер</strong></td><td>Пише повідомлення, резюмує чати, ескалює в WhatsApp.</td></tr>
+ <tr><td class="center"><strong>5</strong></td><td><strong>Верифікація</strong></td><td>Перевіряє польські ліцензії UTK і українські залізничні.</td></tr>
+ <tr><td class="center"><strong>6</strong></td><td><strong>Інтелект</strong></td><td>Після запуску · тренди ринку · підписка €2 500/міс.</td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§4</span> Бізнес-модель</h2>
+ <table class="data-table">
+ <thead><tr><th>Джерело</th><th>Ціна</th><th>Хто платить</th></tr></thead>
+ <tbody>
+ <tr><td>Заставний внесок</td><td><strong>€150</strong> за з'єднання (зростає до €450 на 12-му місяці)</td><td>Власник вантажу</td></tr>
+ <tr><td>Підписка верифікації</td><td><strong>€750 / міс</strong></td><td>Верифіковані оператори</td></tr>
+ <tr><td>Підписка верифікації</td><td><strong>€399 / міс</strong></td><td>Верифіковані власники вантажу</td></tr>
+ <tr><td>Виділене розміщення</td><td>€500 / тиждень</td><td>Оператори</td></tr>
+ </tbody>
+ </table>
+ <p>Точка беззбитковості: <strong>2 платні оператори</strong>. Прогноз доходу 1-го року: <strong>€294 000</strong>.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§5</span> Бюджет</h2>
+ <table class="data-table">
+ <thead><tr><th>Рівень</th><th class="num">Сума</th></tr></thead>
+ <tbody>
+ <tr><td>Мінімум (найнижча фіксована ціна, яку приймемо)</td><td class="num"><strong>€20 000</strong></td></tr>
+ <tr><td>Цільовий діапазон</td><td class="num"><strong>€20 000 – €28 000</strong></td></tr>
+ <tr><td>Стеля (вище — потрібне затвердження Ради)</td><td class="num"><strong>€35 000</strong></td></tr>
+ <tr><td>Понад стелю</td><td class="num">Не схвалено · потрібне скорочення обсягу</td></tr>
+ </tbody>
+ </table>
+ <p>Операційні витрати після запуску: близько <strong>€800/міс</strong> (Anthropic Claude API €150 + хостинг €50 + менеджер €600). Покриваються двома операторами по €750.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§6</span> Графік і виплати за етапами</h2>
+ <table class="data-table">
+ <thead><tr><th class="center" style="width:8%">М</th><th>Результат</th><th class="center" style="width:18%">Виплата</th></tr></thead>
+ <tbody>
+ <tr><td class="center"><strong>1</strong></td><td>Фундамент, схема, кістяк Rex; <strong>верифікація Stripe-Україна на 1-му тижні</strong></td><td class="center"><strong>25%</strong> при підписанні</td></tr>
+ <tr><td class="center"><strong>2</strong></td><td>Реєстрація, публікація лістингів, базовий пошук Rex</td><td class="center">—</td></tr>
+ <tr><td class="center"><strong>3</strong></td><td>Stripe живий, потік застави €150 від початку до кінця, гарантія 48 год</td><td class="center"><strong>25%</strong></td></tr>
+ <tr><td class="center"><strong>4</strong></td><td>Перевірка документів, рейтинги, месенджер, ескалація WhatsApp</td><td class="center">—</td></tr>
+ <tr><td class="center"><strong>5</strong></td><td>Усі шість завдань Rex працюють; протестовано EN/PL/UA на 30 сценаріях</td><td class="center"><strong>25%</strong></td></tr>
+ <tr><td class="center"><strong>6</strong></td><td>Публічний запуск на <code>railx.eu</code>; перша реальна транзакція</td><td class="center"><strong>25%</strong></td></tr>
+ </tbody>
+ </table>
+ <p>Жодна виплата за етапом не звільняється без робочої демонстрації, прийнятої Керівником розробки. Без винятків.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§7</span> Основні ризики та їх зменшення</h2>
+ <table class="data-table">
+ <thead><tr><th class="center" style="width:8%">№</th><th style="width:35%">Ризик</th><th>Зменшення</th></tr></thead>
+ <tbody>
+ <tr class="risk-row"><td>1</td><td><strong>Stripe слабко підтримує українські банки.</strong></td><td>Перевірка на 1-му тижні. У разі невдачі: пропускаємо виплати українцям через UMS Sp. z o.o. (Щецин) або переходимо на Mangopay.</td></tr>
+ <tr class="risk-row"><td>2</td><td><strong>Митні правила і правила небезпечних вантажів часто змінюються.</strong></td><td>Rex готує лише чернетки. Сані Езугбая затверджує перед видачею. Повна автоматизація — пізніше.</td></tr>
+ <tr class="risk-row"><td>3</td><td><strong>Немає каналу даних від PKP Cargo / Укрзалізниці на старті.</strong></td><td>Запуск з ручним оновленням. Автоматичний трекінг — після запуску.</td></tr>
+ <tr class="risk-row"><td>4</td><td><strong>Розробник обіцяє багато, виконує мало.</strong></td><td>Процес Best &amp; Final Offer; обов'язкові імена членів команди; рекомендація клієнта; етапи 25/25/25/25 прив'язані до демо.</td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§8</span> Виключення зі сфери</h2>
+ <p>Наступне явно <strong>поза MVP</strong>:</p>
+ <ul>
+ <li>Нативні мобільні застосунки</li>
+ <li>Інші залізничні коридори, окрім PL ↔ UA</li>
+ <li>Інтеграції TMS перевізників</li>
+ <li>GPS-трекінг у реальному часі</li>
+ <li>Вирішення спорів через ШІ</li>
+ <li>Митно-готові оригінали SMGS (у MVP лише чернетки)</li>
+ </ul>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§9</span> Інтелектуальна власність</h2>
+ <p>Весь код, промпти ШІ, структури даних, конфігурації агентів і документація стають <strong>виключною власністю United Multimodal Services LLC</strong> після фінальної виплати за етапом. Розробник підписує письмове передання прав інтелектуальної власності як умову фінальної виплати.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§10</span> Процес відбору</h2>
+ <p>Троє розробників відібрано серед 166 кандидатів з Upwork та Djinni:</p>
+ <table class="data-table">
+ <thead><tr><th class="center" style="width:6%">№</th><th style="width:30%">Розробник</th><th style="width:24%">Локація</th><th class="center" style="width:12%">Бал</th><th>Статус</th></tr></thead>
+ <tbody>
+ <tr><td class="center"><strong>1</strong></td><td><strong>Aalishan Jami</strong></td><td>Пакистан (Лахор)</td><td class="center"><strong>83/100</strong></td><td>Лідер архітектури</td></tr>
+ <tr><td class="center"><strong>2</strong></td><td><strong>Артем Д. (UppLabs)</strong></td><td>Україна (Київ) + Польща</td><td class="center"><strong>82/100</strong></td><td>Повна пропозиція отримана</td></tr>
+ <tr><td class="center"><strong>3</strong></td><td><strong>Андрій Березовський (Pecode)</strong></td><td>Україна (Львів)</td><td class="center"><strong>59/100</strong></td><td>Перед-пропозиція · очікуємо BAFO</td></tr>
+ </tbody>
+ </table>
+ <p>Усі троє отримують ідентичні запити Best &amp; Final Offer протягом 24 годин після затвердження. Дедлайн: <strong>5 робочих днів</strong> на фінальні зобов'язання щодо ціни, графіка, команди та поставки. Технічні інтерв'ю в <strong>дні 7–9</strong>. Контракт підписано в <strong>день 10</strong>.</p>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§11</span> Запитуване рішення</h2>
+ <p>Рада запитується <strong>ухвалити таке</strong>:</p>
+ <div class="resolution">
+ <p><strong>УХВАЛЕНО</strong>, що Рада директорів United Multimodal Services LLC цим:</p>
+ <p>(а) <strong>ЗАТВЕРДЖУЄ</strong> розробку RailX, описану в цьому меморандумі та доданому Обсязі робіт v2 (Додаток А);</p>
+ <p>(б) <strong>ЗАТВЕРДЖУЄ</strong> бюджетну рамку €20 000 – €28 000 фіксованої ціни, з жорсткою стелею €35 000;</p>
+ <p>(в) <strong>ЗАТВЕРДЖУЄ</strong> 6-місячний графік і структуру виплат за етапами 25/25/25/25;</p>
+ <p>(г) <strong>ЗАТВЕРДЖУЄ</strong> процес відбору, описаний у §10, включно з розсилкою запитів Best &amp; Final Offer трьом перевіреним розробникам; та</p>
+ <p>(д) <strong>УПОВНОВАЖУЄ</strong> Керівника розробки, Іраклія Езугбая, вести переговори та підписати договір на розробку з обраним розробником на умовах, що відповідають цьому меморандуму.</p>
+ </div>
+
+ <h3 style="margin-top: 28px;">Затвердження Радою</h3>
+ <table class="data-table sig-table">
+ <thead><tr><th style="width:40%">Член</th><th class="center" style="width:20%">Голос</th><th class="center" style="width:25%">Підпис</th><th class="center" style="width:15%">Дата</th></tr></thead>
+ <tbody>
+ <tr><td class="sig-name">Іраклій Езугбая · Керівник розробки</td><td class="sig-blank"></td><td class="sig-blank"></td><td class="sig-blank"></td></tr>
+ <tr><td class="sig-name">[Член Ради 2]</td><td class="sig-blank"></td><td class="sig-blank"></td><td class="sig-blank"></td></tr>
+ <tr><td class="sig-name">[Член Ради 3]</td><td class="sig-blank"></td><td class="sig-blank"></td><td class="sig-blank"></td></tr>
+ </tbody>
+ </table>
+ </section>
+
+ <section class="section">
+ <h2><span class="sec-num">§12</span> Додатки</h2>
+ <div class="schedules">
+ <ul>
+ <li><strong>Додаток А</strong> — RailX Обсяг робіт v2 (English / Українська / Polski)</li>
+ <li><strong>Додаток Б</strong> — Підсумок оцінки кандидатів, 166 заявок розглянуто</li>
+ <li><strong>Додаток В</strong> — Шаблон запиту Best &amp; Final Offer <em>(розсилається після затвердження)</em></li>
+ </ul>
+ </div>
+ </section>
+ </div>
+
+ <footer class="footer">
+ <div class="footer-line">
+ <div><strong>UMS · United Multimodal Services LLC</strong> · вул. Energetyków 4/425, 70-656 Щецин, Польща</div>
+ <div>v1.0 · 27 квітня 2026</div>
+ </div>
+ <div style="margin-top: 8px;">Конфіденційно · Розповсюдження: лише Рада UMS · Не передавати</div>
+ </footer>
+</article>
+
+<script>
+ function switchLang(lang) {
+ document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+ document.getElementById('lang-' + lang).classList.add('active');
+ document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+ document.querySelector('.lang-btn[data-lang="' + lang + '"]').classList.add('active');
+ document.documentElement.lang = (lang === 'ua') ? 'uk' : lang;
+ try { localStorage.setItem('railx_lang', lang); } catch(e) {}
+ window.scrollTo({ top: 0, behavior: 'smooth' });
+ }
+ // Restore last language on load
+ try {
+ const saved = localStorage.getItem('railx_lang');
+ if (saved && ['en','pl','ua'].includes(saved)) switchLang(saved);
+ } catch(e) {}
+</script>
+
+</body>
+</html>
